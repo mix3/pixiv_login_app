@@ -13,6 +13,8 @@ sub default :Path :Args {
 
 sub index :Path :Args(0) {
     my ($self, $c) = @_;
+
+    $c->redirect_and_detach($c->uri_for('/loggedin')) if($c->user);
 }
 
 sub login :Path('login') :Args(0) {
